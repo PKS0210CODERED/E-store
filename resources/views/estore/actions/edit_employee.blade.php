@@ -41,7 +41,7 @@
      <br />
      @endif
   
-    <form action="route('user.update',$user->id)" method="POST">
+    <form action="{{ route('user.update',$user) }}" method="POST">
 
         @csrf
         @method('PATCH')
@@ -101,14 +101,8 @@
             
             <br>
 
-            <div class="mb-2 row">
-            <div class="col-sm-2"></div>
-                <label for="inputPassword" class="col-sm-2 col-form-label" >Password:</label>
-                <div class="col-sm-4">
-                <input type="password" class="form-control" name="password"  value="{{ $user->password }}" required>
-                </div>
-            </div>
-            <input type="hidden" name="role" value="customer">
+            
+            <input type="hidden" name="role" value="employee">
             <div>
 
             <br>

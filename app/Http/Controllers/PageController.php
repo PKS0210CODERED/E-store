@@ -34,7 +34,7 @@ class PageController extends Controller
     public function create()
     {
         //
-        $users = User::all();
+        $users =User::all()->where('role', 'employee');
 
         return view('estore.adminEmployee',compact('users'));
     }

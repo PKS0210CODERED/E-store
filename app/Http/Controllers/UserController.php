@@ -71,7 +71,7 @@ class UserController extends Controller
             if($request->role == 'employee')
             {
 
-                $users = User::all();
+                $users = User::all()->where('role','employee');
 
                 return view('estore.adminEmployee',compact('users'))->with('success','Employee saved !');
             }
@@ -124,14 +124,13 @@ class UserController extends Controller
                 'gender' => 'required',
                 'address' => 'required',
                 'mobile' => 'required',
-                'password' => 'required',
                 'role' => 'required'
 
             ]
             );
 
-        $item->update($request->all());
-        return redirect()->route('item.index')->with('success','Product updated successfully !');
+        $user->update($request->all());
+        return redirect()->route('page.create')->with('success','Employee updated successfully !');
     }
 
     /**
