@@ -11,7 +11,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h3>Customer :  {{Auth::user()->name}} </h3>
+                <h3>Customer :  {{ Auth::user()->name }} </h3>
             </div>
 
             <br>
@@ -36,38 +36,25 @@
     <h2> PLACE ORDERS </H2>
     <br>
 
-<form action="{{ route('order.store') }}" method="POST">
+<form action="{{ route('order.store') }}" method="get">
  @csrf
 <diV class="container-sm" style="border:solid 1px blue; padding:30px;text-align:center">
-   
+    
     <div class="mb-2 row">
         <div class="col-sm-2"></div>
-        <label for="name" class="col-sm-2 col-form-label">Product Name:</label>
-        <div class="col-sm-4">
-        <input type="name" class="form-control" name="name" required>
-        </div>
+        <label class="col-sm-2 col-form-label">Product Name: {{ $item->name }}</label>
     </div>
 
     <br>
 
     <div class="mb-2 row">
         <div class="col-sm-2"></div>
-        <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+        <label for="gender" class="col-sm-2 col-form-label">Employee :</label>
         <div class="col-sm-4">
-        <input type="email" class="form-control" name="email" required>
-        </div>
-    </div>
-
-    <br>
-
-    <div class="mb-2 row">
-        <div class="col-sm-2"></div>
-        <label for="gender" class="col-sm-2 col-form-label">Gender:</label>
-        <div class="col-sm-4">
-        <select name="gender" class="form-select"  aria-label="Default select example" required>
-            <option selected disabled>Open this select menu</option>
-            <option value="m">Male</option>
-            <option value="f">Female</option>
+        <select name="employee name" class="form-select"  aria-label="Default select example" required>
+            @foreach ($users as $user)
+            <option value="{{ $user->id }}">{{ $user->name }}</option>
+            @endforeach
         </select>
         </div>
     </div>
@@ -76,38 +63,19 @@
 
     <div class="mb-2 row">
         <div class="col-sm-2"></div>
-        <label for="mobile" class="col-sm-2 col-form-label">Address:</label>
-        <div class="col-sm-4">
-        <input type="address" class="form-control" name="address" required>
-        </div>
+        <label for="mobile" class="col-sm-2 col-form-label">price : {{ $item->price }}</label>
     </div>
 
-    <br>
+    <input type="hidden" name="product_id" value="{{ $item->id }}">
+    <input type="hidden" name="price" value="{{ $item->price }}">
+    <input type="hidden" name="customer_id" value="{{ Auth::user()->id }}">
+    <input type="hidden" name="customer_mobile" value="{{ Auth::user()->mobile }}">
 
-    <div class="mb-2 row">
-        <div class="col-sm-2"></div>
-        <label for="mobile" class="col-sm-2 col-form-label">Mobile:</label>
-        <div class="col-sm-4">
-        <input type="" class="form-control" name="mobile" required>
-        </div>
-    </div>
+
+
+    <br><br>
     
-    <br>
-
-    <div class="mb-2 row">
-    <div class="col-sm-2"></div>
-        <label for="inputPassword" class="col-sm-2 col-form-label" >Password:</label>
-        <div class="col-sm-4">
-        <input type="password" class="form-control" name="password" required>
-        </div>
-    </div>
-    <input type="hidden" name="role" value="customer">
-    <div>
-
-    <br>
-    <br>
-    
-    <button type="submit" name="reg" class="btn btn-primary">Sign Up</button>
+    <button type="submit" name="reg" class="btn btn-primary">Order Now !</button>
     </div>
     
 </diV>

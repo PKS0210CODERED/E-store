@@ -49,9 +49,9 @@
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
+            <td>{{ $product->detail }}</td> 
             <td>{{ $product->price }}</td>
-            <td style="text-align:center"><a class="btn btn-success" href="{{ route('order.edit',$product->id) }}"> Place Order</a></td>
+            <td style="text-align:center"><a class="btn btn-success" href="{{ route('placeorder',$product) }}"> Place Order</a></td>
         </tr>
         @endforeach
         

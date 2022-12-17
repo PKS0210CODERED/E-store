@@ -70,10 +70,10 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
-        return view('estore.actions.placeOrder',compact('order'));
-        
+        //      
     }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -85,9 +85,6 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //
-        return view('estore.actions.placeOrder',compact('request'));
-        
-
     }
 
     /**
