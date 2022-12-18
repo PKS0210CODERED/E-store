@@ -48,16 +48,18 @@
             <th>DATE</th>
         </tr>
 
-       
+       @foreach($orders as $order)
         <tr>
-            <td>data1</td>
-            <td>data2</td>
-            <td>data3</td>
-            <td>data4</td>
-            <td>data5 </td>
-            <td>data6</td>
-            <td>data7</td>
-            <td>data8</td>
+            <td>{{  $order->id }}</td>
+           
+            <td>{{  $order->id }}</td>
+            <td>{{  $order->id }}</td>
+            <td>{{  $order->id }}</td>
+            <td>{{  $order->id }} </td>
+            <td>{{  $order->id }}</td>
+            <td>{{  $order->id }}</td>
+            <td>{{  $order->id }}</td>
+        @endforeach
         </tr>
         
     </table>

@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Item;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use validator;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -15,7 +21,8 @@ class OrderController extends Controller
     public function index()
     {
         //
-        return view('estore.customer');
+        $items = Item::all();
+        return view('estore.customer',compact('items'));
     }
 
     /**
@@ -25,8 +32,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
-        
+        //     
     }
 
     /**
@@ -37,18 +43,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        //    
         $request->validate(
             [
-                'product name' => 'required',
-                'employee name' => 'required',
-                'Price' => 'required',
+                'product_id' => 'required',
+                'employee_id' => 'required',
+                'customer_id' => 'required',
             ]
             );
-
             Order::create($request->all());
 
-            return redirect()->route('Order.index')->with('success','Order saved ! ');
+            return redirect()->route('order.index')->with('success','Order saved ! ');
     }
 
     /**
@@ -60,6 +66,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        
     }
 
     /**
@@ -70,10 +77,10 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //      
+        //
+        return view('estore.actions.placeOrder',compact('order'));
+        
     }
-
-    
 
     /**
      * Update the specified resource in storage.
@@ -85,6 +92,9 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //
+        return view('estore.actions.placeOrder',compact('request'));
+        
+
     }
 
     /**

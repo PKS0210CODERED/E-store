@@ -33,7 +33,7 @@
         @endif
     <br>
    
-    <h2> PLACE ORDERS </H2>
+    <h2> PLACE ORDERS </H2> 
     <br>
 
     <table class="table table-bordered">
@@ -45,13 +45,13 @@
             <th style="text-align:center">ACTION</th>
         </tr>
 
-        @foreach($products as $product)
+        @foreach($items as $item)
         <tr>
-            <td>{{ $product->id }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td> 
-            <td>{{ $product->price }}</td>
-            <td style="text-align:center"><a class="btn btn-success" href="{{ route('placeorder',$product) }}"> Place Order</a></td>
+            <td>{{ $item->id }}</td>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->detail }}</td>
+            <td>{{ $item->price }}</td>
+            <td style="text-align:center"><a class="btn btn-success" href="{{ route('placeorder',$item->id) }}"> Place Order</a></td>
         </tr>
         @endforeach
         

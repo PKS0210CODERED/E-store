@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::resource('user',UserController::class);
 
-Route::resource('item',ItemController::class);  
+Route::resource('item',ItemController::class);
 
 Route::resource('page',PageController::class);
 
@@ -46,4 +46,4 @@ Route::get('/',[UserController::class,'index']);
 
 Route::get('/employee',[UserController::class,'getemployee'])->name('adminEmployee');
 
-Route::get('/placeorder/{$product}',[PageController::class,'placeOrderpage'])->name('placeorder');
+Route::get('/placeorder/{item}',[PageController::class,'placeorderpage'])->name('placeorder');

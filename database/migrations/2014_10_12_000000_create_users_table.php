@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->enum('gender',['m','f']);
             $table->string('address');
-            $table->integer('mobile');
+            $table->string('mobile');
             $table->string('password');
             $table->enum('role',['admin','employee','customer']);
             $table->timestamps();

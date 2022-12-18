@@ -39,6 +39,14 @@ class PageController extends Controller
         return view('estore.adminEmployee',compact('users'));
     }
 
+    public function placeorderpage(Item $item)
+    {
+        //
+        $users=User::all()->where('role', 'employee');
+        return view('estore.actions.placeOrder',compact('users','item'));
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -95,14 +103,4 @@ class PageController extends Controller
     {
         //
     }
-
-   public function placeOrderpage(Item $product)
-   {
-
-    $item=Item::all()->where('id','$product->id');
-    $users=User::all()->where('role','employee');
-
-    return view('estore.actions.placeOrder',compact('item','users'));
-    
-   }
 }

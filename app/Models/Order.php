@@ -10,8 +10,12 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable =[
-        'product name',
-        'employee name',
-        'Price'
+        'product_id',
+        'employee_id',
+        'customer_id'
+    ];
+    protected $hidden=[
+        'product_id',
+        'customer_id',
     ];
 }

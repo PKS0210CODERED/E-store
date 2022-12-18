@@ -67,9 +67,7 @@ class Page2Controller extends Controller
     public function edit($id)
     {
         //
-        $items = Item::all();
-
-        return view('estore.actions.palceOrder',compact(''));
+       
     }
 
     /**

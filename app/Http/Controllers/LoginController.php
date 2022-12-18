@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Item;
+use App\Models\Order;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -39,13 +41,14 @@ class LoginController extends Controller
             
             if(Auth::user()->role == 'employee')
             {
-                return view('estore.employee');
+                $orders = Order::all()->where('employee_id','Auth::user()->id');              
+                return view('estore.employee',compact('orders'));
                
             }
             elseif(Auth::user()->role == 'customer')
             {
-                $products = Item::all();
-                return view('estore.customer',compact('products'));
+                $items = Item::all();
+                return view('estore.customer',compact('items'));
                
             }
             elseif(Auth::user()->role == 'admin')

@@ -36,7 +36,7 @@
     <h2> PLACE ORDERS </H2>
     <br>
 
-<form action="{{ route('order.store') }}" method="get">
+<form action="{{ route('order.store') }}" method="POST">
  @csrf
 <diV class="container-sm" style="border:solid 1px blue; padding:30px;text-align:center">
     
@@ -51,7 +51,7 @@
         <div class="col-sm-2"></div>
         <label for="gender" class="col-sm-2 col-form-label">Employee :</label>
         <div class="col-sm-4">
-        <select name="employee name" class="form-select"  aria-label="Default select example" required>
+        <select name="employee_id" class="form-select"  aria-label="Default select example" required>
             @foreach ($users as $user)
             <option value="{{ $user->id }}">{{ $user->name }}</option>
             @endforeach
@@ -67,9 +67,7 @@
     </div>
 
     <input type="hidden" name="product_id" value="{{ $item->id }}">
-    <input type="hidden" name="price" value="{{ $item->price }}">
     <input type="hidden" name="customer_id" value="{{ Auth::user()->id }}">
-    <input type="hidden" name="customer_mobile" value="{{ Auth::user()->mobile }}">
 
 
 

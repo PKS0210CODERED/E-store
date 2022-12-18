@@ -49,7 +49,7 @@
    
     <h2> EMPLOYEES </H2>
     <br>
-    <a class="btn btn-outline-success" href="{{ route('page2.store') }}">Entroll Employee</a>
+    <a class="btn btn-outline-success" href="{{ route('page2.index') }}">Entroll Employee</a>
     <br><br>
 
     <table class="table table-bordered">
