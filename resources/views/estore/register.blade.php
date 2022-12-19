@@ -60,7 +60,7 @@
         <div class="col-sm-2"></div>
         <label for="mobile" class="col-sm-2 col-form-label">Mobile:</label>
         <div class="col-sm-4">
-        <input type="" class="form-control" name="mobile" required>
+        <input type="number" class="form-control" name="mobile" required>
         </div>
     </div>
     

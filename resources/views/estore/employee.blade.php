@@ -52,13 +52,13 @@
         <tr>
             <td>{{  $order->id }}</td>
            
-            <td>{{  $order->id }}</td>
-            <td>{{  $order->id }}</td>
-            <td>{{  $order->id }}</td>
-            <td>{{  $order->id }} </td>
-            <td>{{  $order->id }}</td>
-            <td>{{  $order->id }}</td>
-            <td>{{  $order->id }}</td>
+            <td>{{  $order->Pname }}</td>
+            <td>{{  $order->detail }}</td>
+            <td>{{  $order->price }}</td>
+            <td>{{  $order->name }} </td>
+            <td>{{  $order->address }}</td>
+            <td>{{  $order->mobile }}</td>
+            <td>{{  $order->created_at }}</td>
         @endforeach
         </tr>
         
