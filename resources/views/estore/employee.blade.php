@@ -17,6 +17,12 @@
             <br>
                
             <div class="pull-right">
+                <a class="btn btn-warning" href="#">Reset Password</a>
+            </div>
+
+            <br>
+               
+            <div class="pull-right">
                 <a class="btn btn-secondary" href="{{ route('logout') }}">LOG OUT</a>
             </div>
         </div>   

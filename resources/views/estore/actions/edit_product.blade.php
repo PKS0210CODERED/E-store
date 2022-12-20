@@ -17,7 +17,7 @@
             <br>
 
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('item.index') }}"> Back</a>
+                <a class="btn btn-primary" href="#"> Back</a>
             </div>
 
             <br>

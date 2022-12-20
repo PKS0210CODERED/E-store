@@ -33,6 +33,9 @@ class Page2Controller extends Controller
     public function create()
     {
         //
+
+        return view('estore.employee');
+
         
     }
 
