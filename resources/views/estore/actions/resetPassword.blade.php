@@ -20,10 +20,11 @@
             <br>
 
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('page2.create')}}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('page2.create') }}"> Back</a>
             </div>
 
-               
+             <br>
+
             <div class="pull-right">
                 <a class="btn btn-secondary" href="{{ route('logout') }}">LOG OUT</a>
             </div>
@@ -33,11 +34,67 @@
     <br>
     <br>
 
-   <!-- success alert message -->
-        @if(session()->get('success'))
-        <div class="alert alert-success">
-            <p>{{ session()->get('success') }}</p>
-        </div>
-        @endif
+
+     <!-- error messages --> 
+
+   @if($errors->any())
+    <div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+         <ul>
+         @foreach ($errors->all() as $error)
+        <li>{{$error}} </li>
+         @endforeach
+        </ul>
+    </div>
+     <br />
+     @endif
+  
+    <form action="{{ route('getpassword') }}" method="POST">
+
+        @csrf
+    <diV class="container-sm" style="border:solid 1px green; padding:30px;text-align:center">
+   
+            <div class="mb-2 row">
+                <div class="col-sm-2"></div>
+                <label for="inputPassword" class="col-sm-2 col-form-label" >Current Password:</label>
+                    <div class="col-sm-4">
+                    <input type="password" class="form-control" name="oldpassword" required>
+                </div>
+            </div>
+            
+            <br>
+
+            <div class="mb-2 row">
+                <div class="col-sm-2"></div>
+                <label for="inputPassword" class="col-sm-2 col-form-label" >New Password:</label>
+                    <div class="col-sm-4">
+                    <input type="password" class="form-control" name="newpassword" required>
+                </div>
+            </div>
+            
+            <br>
+
+            <div class="mb-2 row">
+                <div class="col-sm-2"></div>
+                <label for="inputPassword" class="col-sm-2 col-form-label" >Confirm New Password:</label>
+                    <div class="col-sm-4">
+                    <input type="password" class="form-control" name="confirmpassword" required>
+                </div>
+            </div>
+            
+            <br>
+
+            
+            <div>
+
+            <br>
+            
+            <button type="submit" name="reg" class="btn btn-success">CHANGE</button>
+            </div>
+            
+        </diV>
+
+    </form>
+
     
-@endsection
+@endsection('content')

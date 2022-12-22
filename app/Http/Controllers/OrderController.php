@@ -50,6 +50,7 @@ class OrderController extends Controller
                 'product_id' => 'required',
                 'employee_id' => 'required',
                 'customer_id' => 'required',
+                'status_info' => 'required',
             ]
             );
             Order::create($request->all());
@@ -82,6 +83,30 @@ class OrderController extends Controller
         
     }
 
+    public function updateStatus(Order $order)
+    {
+        //
+
+        if(Auth::user()->role == 'employee')
+        {
+            $affected = DB::table('orders')
+            ->where('id', $order->id)
+            ->update(['status' => 'delivered']);
+
+            return redirect()->route('gotoemployeeorder');
+        }
+        else{
+
+            $affected1 =  DB::table('orders')
+            ->where('id', $order->id)
+            ->update(['status' => 'cancelled']);
+
+            return redirect()->route('customerOrder');
+
+        }
+        
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -107,4 +132,7 @@ class OrderController extends Controller
     {
         //
     }
+
+
+    
 }

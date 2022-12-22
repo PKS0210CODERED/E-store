@@ -41,14 +41,8 @@ class LoginController extends Controller
             
             if(Auth::user()->role == 'employee')
             {
-                $orders = DB::table('orders')
-                ->where('employee_id',Auth::user()->id)
-                ->join('items','orders.product_id','=','items.id')
-                ->join('users','orders.customer_id','=','users.id')
-                ->select('orders.id','items.name as Pname','items.detail','items.price','users.name','users.address','users.mobile','orders.created_at')
-                ->get();
-
-                return view('estore.employee',compact('orders'));
+                
+                return view('estore.employee');
                
             }
             elseif(Auth::user()->role == 'customer')
@@ -76,6 +70,18 @@ class LoginController extends Controller
     {
         Auth::logout();
         return view('estore.login');
+    }
+
+    function gotoEmployeeOrder()
+    {
+        $orders = DB::table('orders')
+        ->where('employee_id',Auth::user()->id)
+        ->join('items','orders.product_id','=','items.id')
+        ->join('users','orders.customer_id','=','users.id')
+        ->select('orders.id','items.name as Pname','items.detail','items.price','users.name','users.address','users.mobile','orders.created_at','orders.status')
+        ->get();
+
+        return view('estore.employeeOrder',compact('orders'));
     }
 
 }

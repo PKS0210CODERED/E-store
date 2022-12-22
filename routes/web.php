@@ -47,3 +47,15 @@ Route::get('/',[UserController::class,'index']);
 Route::get('/employee',[UserController::class,'getemployee'])->name('adminEmployee');
 
 Route::get('/placeorder/{item}',[PageController::class,'placeorderpage'])->name('placeorder');
+
+Route::get('/resetpassword',[UserController::class,'gotoReset'])->name('reset');
+
+Route::post('/updatepassword',[UserController::class,'Resetpassword'])->name('getpassword');
+
+Route::get('/customerorder',[UserController::class,'gotocustomerOrder'])->name('customerOrder');
+
+Route::get('/customer',[UserController::class,'returnCustomer'])->name('returncustomer');
+
+Route::get('/updatestatus/{order}',[OrderController::class,'updateStatus'])->name('updatestatus');
+
+Route::get('/employeeOrder',[LoginController::class,'gotoEmployeeOrder'])->name('gotoemployeeorder');

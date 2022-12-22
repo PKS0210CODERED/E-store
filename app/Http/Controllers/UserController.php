@@ -157,5 +157,68 @@ class UserController extends Controller
 
     }
 
+    public function gotoReset()
+    {
+
+        return view('estore.actions.resetPassword');
+
+    }
+
+    public function Resetpassword(Request $request)
+    {
+
+        $request->validate([
+            'oldpassword' => 'required',
+            'newpassword' => 'required|alphaNum|min:4',
+            'confirmpassword' => 'required|alphaNum|min:4',
+        ]);
+        
+        if (!Hash::check($request->get('oldpassword'), Auth::user()->password)) {
+            return redirect()->route('reset')->with('error',"Your current password does not matches with the password.");
+        }
+
+        if(strcmp($request->get('newpassword'), $request->get('oldpassword')) == 0){
+            return redirect()->route('reset')->with('error',"New Password cannot be same as your current password.");
+        }
+
+        if(strcmp($request->get('confirmpassword'), $request->get('newpassword')) == 1){
+            return redirect()->route('reset')->with('error',"new password and confirm password not as same check again!!");
+        }
+
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('newpassword'));
+        $user->save();
+
+        return redirect()->route('page2.create')->with("success","Password successfully changed!");
+
+    }
+
+
+    public function gotocustomerOrder()
+    {
+
+        $orders = DB::table('orders')
+        ->where('customer_id',Auth::user()->id)
+        ->join('items','orders.product_id','=','items.id')
+        ->join('users','orders.employee_id','=','users.id')
+        ->select('orders.id','items.name as Pname','items.detail','items.price','users.name as ename','orders.status as status')
+        ->get();
+
+        
+        return view('estore.actions.customer_order',compact('orders'));
+
+    }
+
+    public function returnCustomer()
+    {
+
+        $items = Item::all();
+        return view('estore.customer',compact('items'));
+
+    }
+
+
+
 
 }

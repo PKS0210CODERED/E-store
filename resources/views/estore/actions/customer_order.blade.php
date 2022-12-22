@@ -23,7 +23,7 @@
             <br>
 
             <div class="pull-right">
-                <a class="btn btn-warning" href="{{ route('customerOrder') }}">My Orders</a>
+                <a class="btn btn-primary" href="{{ route('returncustomer') }}">Back</a>
             </div>
 
         </div>   
@@ -40,7 +40,7 @@
         @endif
     <br>
    
-    <h2> PLACE ORDERS </H2> 
+    <h2> CUSTOMER ORDER DETAILS </H2> 
     <br>
 
     <table class="table table-bordered">
@@ -49,16 +49,26 @@
             <th>NAME</th>
             <th>DETAIL</th>
             <th>PRICE</th>
-            <th style="text-align:center">ACTION</th>
+            <th>DELIVERY PERSON</th>
+            <th style="text-align:center">STATUS</th>
         </tr>
 
-        @foreach($items as $item)
+        @foreach($orders as $order)
         <tr>
-            <td>{{ $item->id }}</td>
-            <td>{{ $item->name }}</td>
-            <td>{{ $item->detail }}</td>
-            <td>{{ $item->price }}</td>
-            <td style="text-align:center"><a class="btn btn-success" href="{{ route('placeorder',$item->id) }}"> Place Order</a></td>
+            <td>{{ $order->id }}</td>
+            <td>{{ $order->Pname }}</td>
+            <td>{{ $order->detail }}</td>
+            <td>{{ $order->price }}</td>
+            <td>{{ $order->ename }}</td>
+            @if( $order->status == 'delivered')
+                <td style="text-align:center">Delivered</td>
+            @elseif(  $order->status  == 'cancelled')
+                <td style="text-align:center">Cancelled</td>
+            @else
+                <td style="text-align:center"><a class="btn btn-danger" href="{{ route('updatestatus',$order->id) }}"> Cancel Order</a></td>
+            @endif
+
+
         </tr>
         @endforeach
         

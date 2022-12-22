@@ -17,7 +17,7 @@
             <br>
                
             <div class="pull-right">
-                <a class="btn btn-warning" href="#">Reset Password</a>
+                <a class="btn btn-warning" href="{{ route('reset') }}">Reset Password</a>
             </div>
 
             <br>
@@ -25,51 +25,20 @@
             <div class="pull-right">
                 <a class="btn btn-secondary" href="{{ route('logout') }}">LOG OUT</a>
             </div>
+
+            <br>
+               
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('gotoemployeeorder') }}">My Orders</a>
+            </div>
+
         </div>   
     </div>
    
     <br>
     <br>
 
-   <!-- success alert message -->
-        @if(session()->get('success'))
-        <div class="alert alert-success">
-            <p>{{ session()->get('success') }}</p>
-        </div>
-        @endif
-    <br>
+    <h3 style="text-align:center;" > WELCOME EMPLOYEE </h3>
+
    
-    <h2> ORDER DETAILS </H2>
-    <br>
-
-    <table class="table table-bordered">
-        <tr>
-            <th>NO</th>
-            <th>PRODUCT NAME</th>
-            <th>DETAIL</th>
-            <th>PRICE</th>
-            <th>CUSTOMER NAME</th>
-            <th>CUSTOMER ADDRESS</th>
-            <th>CUSTOMER MOBILE</th>
-            <th>DATE</th>
-        </tr>
-
-       @foreach($orders as $order)
-        <tr>
-            <td>{{  $order->id }}</td>
-           
-            <td>{{  $order->Pname }}</td>
-            <td>{{  $order->detail }}</td>
-            <td>{{  $order->price }}</td>
-            <td>{{  $order->name }} </td>
-            <td>{{  $order->address }}</td>
-            <td>{{  $order->mobile }}</td>
-            <td>{{  $order->created_at }}</td>
-        @endforeach
-        </tr>
-        
-    </table>
-
-
-
 @endsection

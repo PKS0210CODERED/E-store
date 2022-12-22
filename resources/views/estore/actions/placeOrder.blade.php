@@ -68,7 +68,7 @@
 
     <input type="hidden" name="product_id" value="{{ $item->id }}">
     <input type="hidden" name="customer_id" value="{{ Auth::user()->id }}">
-
+    <input type="hidden" name="status_info" value="noupdate">
 
 
     <br><br>

@@ -17,5 +17,6 @@ class Order extends Model
     protected $hidden=[
         'product_id',
         'customer_id',
+        'status_info'
     ];
 }
